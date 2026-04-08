@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>欧摩威智慧物流云平台</title>
+
+<style>
+body {
+    margin:0;
+    background:#e6edf5;
+    font-family:微软雅黑;
+}
+
+/* 顶部 */
+.header {
+    background:#3c78b5;
+    color:white;
+    padding:10px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.header-title {
+    font-size:44px;
+}
+
+.header-right {
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.btn {
+    background:#2f6fa5;
+    padding:5px 10px;
+    color:white;
+    cursor:pointer;
+}
+
+/* 左侧*/
+.sidebar {
+    width:180px;
+    background:#2f6fa5;
+    height:100vh;
+    position:fixed;
+    top:90px;
+    left:0;
+}
+
+.sidebar div {
+    color:white;
+    padding:10px;
+    border-bottom:1px solid #3c78b5;
+    cursor:pointer;
+}
+
+/* 主体 */
+.main {
+    margin-left:180px;
+    padding:20px;
+}
+
+/* 上方按钮 */
+.top-menu {
+    display:flex;
+    gap:10px;
+    margin-bottom:10px;
+}
+
+.top-menu div {
+    background:#3c78b5;
+    color:white;
+    padding:6px 12px;
+}
+
+/* 表格 */
+.table-box {
+    background:white;
+    padding:10px;
+    display:flex;
+}
+
+.left-table {
+    width:60%;
+}
+
+.row {
+    display:flex;
+    border:1px solid #999;
+}
+
+.label {
+    width:150px;
+    background:#3c78b5;
+    color:white;
+    padding:8px;
+}
+
+.value {
+    flex:1;
+    padding:8px;
+    background:#f2f2f2;
+    cursor:pointer;
+}
+
+.value:hover {
+    background:#ddd;
+}
+
+.red { color:red; }
+
+/* 右侧 */
+.right-box {
+    width:100%;
+    border-left:24px solid #3c78b5;
+    padding:20px;
+}
+
+/* 汇率 */
+.rate {
+    display:flex;
+    justify-content:space-between;
+    border:1px solid #999;
+    margin-top:5px;
+}
+
+.rate div {
+    padding:10px;
+}
+
+/* 输入框 */
+.search {
+    margin:10px 0;
+}
+
+.sidebar div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0;
+    text-align: center;
+}
+
+.sidebar div {
+    text-align: center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- 顶部 -->
+<div class="header">
+         <div class="header-title">欧摩威智慧物流云平台 🤖</div>
+
+    <div class="header-right">
+        <div id="time"></div>
+        <div class="btn" onclick="edit(this)">登录用户</div>
+        <div class="btn" onclick="edit(this)">王桂英</div>
+        <div class="btn">注销</div>
+    </div>
+</div>
+
+<!-- 居中-->
+<div class="sidebar">
+    <div>首页</div>
+    <div>经营看板</div>
+    <div>商家管理</div>
+    <div>账号查询</div>
+    <div>收支账目</div>
+    <div>全球库存</div>
+    <div>评价管理</div>
+    <div>员工信息</div>
+    <div>现金管理</div>
+    <div>订单管理</div>
+</div>
+
+<!-- 主体 -->
+<div class="main">
+
+<!-- 菜单 -->
+<div class="top-menu">
+    <div>物流对账</div>
+    <div>外汇账单</div>
+    <div>预付款项</div>
+    <div>采购统计</div>
+    <div>考勤绩效</div>
+    <div>仓储供货</div>
+    <div>兼职佣金</div>
+    <div>账户状态</div>
+</div>
+
+<!-- 输入 -->
+<div class="search">
+    <input type="text" value="1287831217276@163.com" onclick="edit(this)">
+    <button>查询</button>
+</div>
+
+<!-- 表格 -->
+<div class="table-box">
+
+<div class="left-table">
+
+<div class="row">
+<div class="label center-text">商家姓名</div>
+<div class="value" onclick="edit(this)">陈昆艳</div>
+</div>
+
+<div class="row">
+<div class="label">注册日期</div>
+<div class="value" onclick="edit(this)">2025/7/29</div>
+</div>
+
+<div class="row">
+<div class="label">经营时间</div>
+<div class="value" onclick="edit(this)">未满三个月</div>
+</div>
+
+<div class="row">
+<div class="label">营业总额</div>
+<div class="value" onclick="edit(this)">$1</div>
+</div>
+
+<div class="row">
+<div class="label">提现金额</div>
+<div class="value" onclick="edit(this)">$1</div>
+</div>
+
+<div class="row">
+<div class="label">审核状态</div>
+<div class="value red" onclick="edit(this)">信誉分和星级不足</div>
+</div>
+
+<!-- 汇率 -->
+<div class="row">
+<div class="label">今日汇率</div>
+<div class="value" onclick="edit(this)">6.88</div>
+</div>
+    
+<div class="row">
+<div class="label">美元金额</div>
+<div class="value" onclick="edit(this)">$1.00 USD</div>
+</div>
+    
+<div class="row">
+<div class="label">人民币金额</div>
+<div class="value" onclick="edit(this)">¥6.88.00 CNY</div>
+</div>
+
+</div>
+
+<!-- 右侧 -->
+<div class="right-box">
+
+<p>信誉分：<span class="red" onclick="edit(this)">0分</span>
+&nbsp;&nbsp;星级下降：
+<span class="red" onclick="edit(this)">1星</span></p>
+  
+<p>
+状态：
+<span class="red" onclick="edit(this)">异常</span>
+&nbsp;&nbsp;信誉分下降：
+<span class="red" onclick="edit(this)">10分</span>
+&nbsp;&nbsp;星级下降：
+<span class="red" onclick="edit(this)">1星</span>
+    
+</p>
+
+<p onclick="edit(this)">
+详情：商家未按系统指令分笔提现，系统稽核该账号为风险账号。
+24小时内未提升信用积分到100分，将永久冻结账号。
+</p>
+
+<p onclick="edit(this)">
+止损措施：联系管理员锁定进度，防止信用评分持续下滑。
+</p>
+
+<p onclick="edit(this)">
+解决方法：累积充值500美金可提升1分，激活提现功能。
+</p>
+
+</div>
+
+</div>
+
+<!-- 说明 -->
+<div style="background:#3c78b5;color:white;padding:24px;margin-top:10px;" onclick="edit(this)">
+    信用分说明：信用分是依据方方面面的数据而设计的信用体系，本质上来说，“信用分”是一套征信系统，平台的行为记录。
+对海量信息数据的综合处理和评估，主要包含了用户信用历史、行为偏好、履约能力、身份特质、人脉关系五个维度。基于互联
+网金融数据，并与公安网等公共机构以及合作伙伴建立数据合作，与传统征信数据不同。“信用分”通过分析大量的网络交易及行
+为数据，可以帮助互联网金融企业为用户提供快速授信及现金分期服务。
+    
+</div>
+
+</div>
+
+<script>
+
+// 时间
+function updateTime(){
+    let now = new Date();
+    document.getElementById("time").innerText =
+        now.getFullYear()+"/"+(now.getMonth()+1)+"/"+now.getDate()
+        +" "+now.toLocaleTimeString();
+}
+setInterval(updateTime,1000);
+
+// 编辑
+function edit(el){
+    let val = prompt("修改内容：", el.innerText || el.value);
+    if(val){
+        if(el.tagName==="INPUT"){
+            el.value = val;
+        }else{
+            el.innerText = val;
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>

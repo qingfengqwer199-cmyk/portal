@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>A4编辑页面</title>
+
+<style>
+body {
+    background:#ccc;
+    display:flex;
+    justify-content:center;
+    padding:20px;
+}
+
+/* A4纸 */
+.page {
+    width:210mm;
+    height:297mm;
+    background:white;
+    padding:20mm;
+    box-shadow:0 0 10px rgba(0,0,0,0.3);
+    position:relative;
+}
+
+/* 可编辑区域 */
+.editable {
+    border:1px dashed #aaa;
+    padding:5px;
+    min-height:30px;
+    cursor:text;
+}
+
+/* 印章 */
+.stamp {
+    width:120px;
+    position:absolute;
+    top:100px;
+    left:100px;
+    cursor:move;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page" id="page">
+
+    <h2 contenteditable="true" class="editable"><img id="stamp" class="stamp" src="TK-biaoti.png" alt="印章"> </h2>
+
+    <p contenteditable="true" class="editable">
+        这里是正文内容，点击可以直接编辑文字……
+    </p>
+
+    <!-- 印章 -->
+    <img id="stamp" class="stamp" src="OM-yinzhang.png" alt="印章"> 
+
+</div>
+
+<!-- 控制区 -->
+<div style="position:fixed;right:20px;top:20px;background:white;padding:10px;">
+    
+    <input type="file" id="upload" accept="image/*"><br><br>
+
+    <button onclick="printPage()">🖨 打印</button>
+
+</div>
+
+<script>
+
+// 上传印章
+document.getElementById("upload").onchange = function(e){
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = function(){
+        document.getElementById("stamp").src = reader.result;
+    }
+    reader.readAsDataURL(file);
+}
+
+// 拖动印章
+let stamp = document.getElementById("stamp");
+let isDragging = false;
+
+stamp.onmousedown = function(e){
+    isDragging = true;
+}
+
+document.onmouseup = function(){
+    isDragging = false;
+}
+
+document.onmousemove = function(e){
+    if(isDragging){
+        stamp.style.left = e.pageX - 60 + "px";
+        stamp.style.top = e.pageY - 60 + "px";
+    }
+}
+
+// 打印
+function printPage(){
+    window.print();
+}
+
+</script>
+
+</body>
+</html>

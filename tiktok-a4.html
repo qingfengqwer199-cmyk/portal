@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>TikTok文件</title>
+
+<style>
+body{
+    background:#eee;
+    display:flex;
+    justify-content:center;
+    padding:20px;
+    font-family: "SimSun", serif;
+}
+
+/* A4页面 */
+.page{
+    width:210mm;
+    height:297mm;
+    background:#fff;
+    padding:30mm 25mm;
+    box-shadow:0 0 10px rgba(0,0,0,0.3);
+    position:relative;
+}
+
+/* 顶部LOGO */
+.header{
+    text-align:center;
+    font-size:40px;
+    font-weight:bold;
+    margin-bottom:60px;
+}
+
+/* 内容 */
+.content{
+    font-size:18px;
+    line-height:32px;
+}
+
+/* 可编辑 */
+.editable{
+    outline:none;
+}
+
+/* 印章 */
+.stamp{
+    width:150px;
+    position:absolute;
+    bottom:80px;
+    right:120px;
+    cursor:move;
+}
+
+/* 日期 */
+.date{
+    position:absolute;
+    bottom:50px;
+    right:160px;
+    font-size:16px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- 顶部 -->
+    <div class="header editable" contenteditable="true">
+        TikTok Shop
+    </div>
+
+    <!-- 内容 -->
+    <div class="content">
+
+        <p class="editable" contenteditable="true">尊敬的商家：</p>
+
+        <p class="editable" contenteditable="true">身份证号码：</p>
+
+        <p class="editable" contenteditable="true">商家账号：</p>
+
+        <p class="editable" contenteditable="true">
+            由于商家资金临时周转困难，无法全额支付店铺订单提现款，经双方商议达成一致，
+            由三方合作顾问（运营总监）为商家担保申请援助金：15100美元，
+            协助商家处理店铺订单重置。当订单结算处理完成之后，
+            商家需在72小时内归还援助金，超时将由商家支付援金的3%滞纳金。
+        </p>
+
+        <p class="editable" contenteditable="true">
+            此业务办理成功后，救援金将在10分钟内下达到商家实名店铺充值钱包账户里，
+            商家需要及时完成闭店结算办理。归还商家垫资金额。
+        </p>
+
+    </div>
+
+    <!-- 印章 -->
+    <img id="stamp" class="stamp" src="OM-yinzhang.png" alt="印章"> 
+
+    <!-- 日期 -->
+    <div class="date editable" contenteditable="true">
+   
+    </div>
+
+</div>
+
+<!-- 上传印章 -->
+<div style="position:fixed;right:20px;top:20px;background:#fff;padding:10px;">
+    <input type="file" id="upload">
+</div>
+
+<script>
+
+// 上传印章
+document.getElementById("upload").onchange = function(e){
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(){
+        document.getElementById("stamp").src = reader.result;
+    }
+
+    reader.readAsDataURL(file);
+}
+
+// 拖动印章
+let stamp = document.getElementById("stamp");
+let isMove = false;
+
+stamp.onmousedown = function(){
+    isMove = true;
+}
+
+document.onmouseup = function(){
+    isMove = false;
+}
+
+document.onmousemove = function(e){
+    if(isMove){
+        stamp.style.left = e.pageX - 75 + "px";
+        stamp.style.top = e.pageY - 75 + "px";
+    }
+}
+
+</script>
+
+</body>
+</html>
