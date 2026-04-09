@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
@@ -66,7 +66,7 @@ body{
     justify-content:space-between;
 }
 
-/* 内容区域（蓝色风格） */
+/* 内容区域 */
 .content{
     padding:20px;
     background:#e6f0ff;
@@ -80,13 +80,6 @@ body{
     border-radius:10px;
     margin-bottom:20px;
     box-shadow:0 4px 12px rgba(0,0,0,0.08);
-    animation:fade 0.3s;
-}
-
-/* 动画 */
-@keyframes fade{
-    from{opacity:0;transform:translateY(10px)}
-    to{opacity:1;}
 }
 
 </style>
@@ -100,6 +93,7 @@ body{
 <div class="sidebar">
     <div class="logo">后台系统</div>
 
+    <!-- SPA页面 -->
     <div class="menu-item active" onclick="loadPage('home',this)">
         <i class="bi bi-house"></i>首页
     </div>
@@ -112,9 +106,26 @@ body{
         <i class="bi bi-wallet"></i>资金管理
     </div>
 
-<div class="menu-item" onclick="goPage('th.html')">
-    <i class="bi bi-box-arrow-up-right"></i>跳转页面
-</div>
+    <!-- ===== 新增5个跳转页面 ===== -->
+    <div class="menu-item" onclick="goPage('page1.html')">
+        <i class="bi bi-file-earmark"></i>页面一
+    </div>
+
+    <div class="menu-item" onclick="goPage('page2.html')">
+        <i class="bi bi-file-earmark"></i>页面二
+    </div>
+
+    <div class="menu-item" onclick="goPage('page3.html')">
+        <i class="bi bi-file-earmark"></i>页面三
+    </div>
+
+    <div class="menu-item" onclick="goPage('page4.html')">
+        <i class="bi bi-file-earmark"></i>页面四
+    </div>
+
+    <div class="menu-item" onclick="goPage('page5.html')">
+        <i class="bi bi-file-earmark"></i>页面五
+    </div>
 
 </div>
 
@@ -126,7 +137,7 @@ body{
         <div id="time"></div>
     </div>
 
-    <!-- 内容切换区 -->
+    <!-- 内容 -->
     <div class="content" id="content"></div>
 
 </div>
@@ -135,17 +146,13 @@ body{
 
 <script>
 
-/* ===== 页面模板（核心）===== */
+/* ===== 页面模板 ===== */
 const pages = {
 
     home: `
         <div class="card">
             <h2>首页</h2>
             <p>欢迎进入后台系统</p>
-        </div>
-
-        <div class="card">
-            <p>今日收入：¥12000</p>
         </div>
     `,
 
@@ -164,22 +171,23 @@ const pages = {
     `
 };
 
-/* ===== 加载页面（无刷新）===== */
+/* ===== SPA切换 ===== */
 function loadPage(page,el){
-
-    // 切换内容
     document.getElementById("content").innerHTML = pages[page];
 
-    // 高亮菜单
     document.querySelectorAll(".menu-item").forEach(i=>i.classList.remove("active"));
     el.classList.add("active");
 }
 
-/* 默认加载首页 */
+/* ===== 跳转HTML页面（重点）===== */
+function goPage(url){
+    window.location.href = url;
+}
+
+/* 默认加载 */
 loadPage('home', document.querySelector('.menu-item'));
 
-
-/* ===== 时间 ===== */
+/* 时间 */
 function updateTime(){
     const now = new Date();
     const week = ["周日","周一","周二","周三","周四","周五","周六"];
